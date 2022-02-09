@@ -9,16 +9,21 @@
     "type": "project",
     "require": {
         "php": "^7.0|^8.0",
-        "michael-rubel/laravel-formatters": "dev-main"
+        "michael-rubel/laravel-formatters": "dev-main",
+        "illuminate/contracts": "^8.73"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "4.0.x-dev",
-        "phpunit/phpunit": "10.0.x-dev"
-    },
-    "autoload": {
-        "psr-4": {
-            "Olsza\\ValueObjects\\": "src"
-        }
+        "nunomaduro/collision": "^5.10",
+        "nunomaduro/larastan": "^1.0",
+        "orchestra/testbench": "^6.22",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "spatie/laravel-ray": "^1.26",
+        "squizlabs/php_codesniffer": "4.0.x-dev"
     },
     "license": "MIT",
     "authors": [
@@ -29,5 +34,31 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev"
+    "autoload": {
+        "psr-4": {
+            "Olsza\\ValueObjects\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Olsza\\ValueObjects\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "TaxNumber": "Olsza\\ValueObjects\\Facades\\TaxNumber"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
